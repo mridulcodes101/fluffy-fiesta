@@ -1,0 +1,367 @@
+/* ==========================================================================
+   FinalQuestion Component Styles (CSS Module)
+   ========================================================================== */
+
+.finalSection {
+  position: relative;
+  width: 100%;
+  padding: 5.5rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Music Toggle Cassette Button */
+.musicToggleBtn {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 900;
+  background: var(--color-warm-yellow);
+  color: var(--color-text);
+  font-family: var(--font-handwritten);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.45rem 0.95rem;
+  border-radius: 18px;
+  border: 1.5px solid var(--color-text);
+  box-shadow: var(--shadow-paper);
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.2s ease;
+}
+
+.musicToggleBtn:hover {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+/* --------------------------------------------------------------------------
+   Minimal Background Ornaments
+   -------------------------------------------------------------------------- */
+.minimalDecorContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.minimalDecor {
+  position: absolute;
+  opacity: 0.55;
+  filter: drop-shadow(0 2px 4px rgba(74, 63, 53, 0.06));
+}
+
+.driftingPetal { top: 12%; left: 8%; animation: floatPetal 5s ease-in-out infinite alternate; }
+.star1 { top: 22%; right: 8%; }
+.star2 { bottom: 20%; left: 6%; }
+.paperClip { top: 50%; right: 4%; transform: rotate(15deg); }
+.pressedFlower { bottom: 12%; right: 10%; font-size: 2rem; opacity: 0.6; }
+
+@keyframes floatPetal {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-12px) rotate(15deg); }
+}
+
+/* --------------------------------------------------------------------------
+   Section Intro Handwriting Area
+   -------------------------------------------------------------------------- */
+.introArea {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.introSentence {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  color: var(--color-muted);
+  line-height: 1.5;
+  opacity: 0;
+}
+
+.introThankYou {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  color: var(--color-text);
+  margin-top: 0.4rem;
+  opacity: 0;
+}
+
+.introSmile {
+  font-size: 2rem;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Folded Diary Page Card
+   -------------------------------------------------------------------------- */
+.diaryPageCard {
+  background: var(--bg-secondary);
+  width: 100%;
+  max-width: 680px;
+  padding: 3.5rem 2.8rem;
+  border-radius: var(--radius-paper);
+  border: 2px dashed var(--color-primary-pink);
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  box-sizing: border-box;
+  margin: 1rem 0;
+  opacity: 0;
+}
+
+.washiTapeTop {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 95px;
+  height: 25px;
+  background-color: var(--tape-yellow);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 15;
+}
+
+.diaryHeading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+}
+
+.diaryBodyLine {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: var(--color-text);
+  line-height: 1.85;
+  margin-bottom: 0.8rem;
+  opacity: 0;
+}
+
+.questionLine {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--color-primary-pink);
+  font-weight: 700;
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Response Paper Buttons
+   -------------------------------------------------------------------------- */
+.buttonsArea {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+}
+
+.paperBtn {
+  background-color: var(--bg-secondary);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius-paper);
+  border: 2px solid var(--color-text);
+  box-shadow: var(--shadow-paper);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btnOption1:hover {
+  transform: rotate(3deg) scale(1.06);
+  background-color: #FFE5EC;
+  box-shadow: 0 10px 24px rgba(255, 143, 171, 0.3);
+}
+
+.btnOption2:hover {
+  transform: rotate(-3deg) scale(1.06);
+  background-color: #FFF3B0;
+  box-shadow: 0 10px 24px rgba(255, 209, 102, 0.3);
+}
+
+/* Response Note Popup */
+.responseNote {
+  margin-top: 1.8rem;
+  font-family: var(--font-handwritten);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-primary-pink);
+  background: var(--color-soft-peach);
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-note);
+  border: 1.5px dashed var(--color-primary-pink);
+  animation: noteFade 0.5s ease-out;
+  text-align: center;
+}
+
+@keyframes noteFade {
+  0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Optional Note */
+.optionalNote {
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+  color: var(--color-muted);
+  margin-top: 1.5rem;
+  opacity: 0;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Final Sign-off Card & Peaceful Ending Screen
+   -------------------------------------------------------------------------- */
+.finalPageCard {
+  background: #FFFDF8;
+  width: 100%;
+  max-width: 650px;
+  padding: 3.5rem 2.5rem;
+  border-radius: var(--radius-paper);
+  border: 2px dashed var(--color-primary-pink);
+  box-shadow: var(--shadow-paper);
+  text-align: center;
+  margin-top: 3rem;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.finalMessageText {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.signatureText {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  color: var(--color-muted);
+  margin-top: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Poetic Ending Overlay Screen */
+.poeticEndingOverlay {
+  margin-top: 3rem;
+  background: var(--bg-main);
+  padding: 3.5rem 2.5rem;
+  border-radius: var(--radius-paper);
+  border: 2px dashed var(--color-light-pink);
+  box-shadow: var(--shadow-paper);
+  text-align: center;
+  max-width: 580px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: gentleFadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes gentleFadeIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.poeticText1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: var(--color-text);
+}
+
+.poeticText2 {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--color-muted);
+}
+
+.mridulSignature {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--color-primary-pink);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.bloomingFlower {
+  display: inline-block;
+  animation: bloomAnim 2.5s ease-in-out forwards;
+}
+
+@keyframes bloomAnim {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  100% { transform: scale(1.2) rotate(0deg); opacity: 1; }
+}
+
+/* Mascot Cloud Waving Goodbye */
+.wavingMascot {
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.85;
+}
+
+.mascotFloatAway {
+  animation: floatAway 6s ease-in-out forwards;
+}
+
+@keyframes floatAway {
+  0% { transform: translateY(0) translateX(0); opacity: 0.85; }
+  100% { transform: translateY(-80px) translateX(60px); opacity: 0; }
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .diaryPageCard, .finalPageCard, .poeticEndingOverlay {
+    padding: 2.2rem 1.2rem;
+    max-width: 95%;
+  }
+
+  .buttonsArea {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .paperBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

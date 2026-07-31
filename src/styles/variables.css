@@ -1,0 +1,54 @@
+/* ==========================================================================
+   For Mishti 🌸 - Global CSS Design Tokens & Variables
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-main: #FFF8F2;
+  --bg-secondary: #FFFDF8;
+  --color-primary-pink: #FF8FAB;
+  --color-light-pink: #FFC6D3;
+  --color-warm-yellow: #FFD166;
+  --color-soft-peach: #FFE8CC;
+  --color-text: #4A3F35;
+  --color-muted: #8A7D74;
+
+  /* Decorative Tints & Washi Tape Colors */
+  --tape-yellow: rgba(255, 209, 102, 0.6);
+  --tape-pink: rgba(255, 143, 171, 0.45);
+  --tape-peach: rgba(255, 232, 204, 0.7);
+
+  /* Typography */
+  --font-heading: 'Patrick Hand', cursive, sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --font-handwritten: 'Caveat', cursive, handwriting;
+
+  /* Spacing System */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+  --section-padding: 5rem 1.5rem;
+
+  /* Container Widths */
+  --container-max-width: 920px;
+  --card-max-width: 720px;
+
+  /* Organic Scrapbook Border Radii */
+  --radius-paper: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-note: 185px 15px 200px 15px / 15px 200px 15px 185px;
+  --radius-pill: 50px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+
+  /* Shadows */
+  --shadow-paper: 3px 8px 20px rgba(74, 63, 53, 0.07), -2px -2px 6px rgba(255, 255, 255, 0.8);
+  --shadow-soft: 0 8px 24px rgba(74, 63, 53, 0.06);
+  --shadow-sticky: 2px 6px 14px rgba(74, 63, 53, 0.09);
+
+  /* Animation Timings */
+  --ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-normal: 0.3s;
+}

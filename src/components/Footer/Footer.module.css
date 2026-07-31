@@ -1,0 +1,15 @@
+.footer {
+  min-height: 30vh;
+  background: transparent;
+  border-top: 2px dashed var(--color-light-pink);
+  padding: 4rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}

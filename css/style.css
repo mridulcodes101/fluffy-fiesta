@@ -1,0 +1,623 @@
+/* ==========================================================================
+   For Mishti ❤️ - Scrapbook Design System & Foundation Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & CSS Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color Palette */
+  --bg-main: #FFF8F2;
+  --bg-card: #FFFDF8;
+  --color-primary: #FF8FAB;
+  --color-accent: #FFC6D3;
+  --color-secondary: #FFD166;
+  --color-text: #4A3F35;
+  --color-muted: #8A7D74;
+
+  /* Accent Tints */
+  --tape-color: rgba(255, 209, 102, 0.55);
+  --tape-color-alt: rgba(255, 143, 171, 0.45);
+  --shadow-soft: 0 8px 24px rgba(74, 63, 53, 0.08);
+  --shadow-paper: 3px 8px 20px rgba(74, 63, 53, 0.08), -2px -2px 6px rgba(255, 255, 255, 0.9);
+
+  /* Fonts */
+  --font-heading: 'Patrick Hand', cursive, sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --font-handwritten: 'Caveat', cursive, handwriting;
+
+  /* Spacing & Layout */
+  --section-padding: 5rem 1.5rem;
+  --container-max-width: 900px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Core Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  /* Subtle paper texture background pattern */
+  background-image: 
+    radial-gradient(rgba(138, 125, 116, 0.07) 1px, transparent 1px),
+    radial-gradient(rgba(255, 143, 171, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Heading Hierarchy */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+h1 { font-size: clamp(2.6rem, 6.5vw, 4.8rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+
+p {
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+}
+
+.handwritten-label {
+  font-family: var(--font-handwritten);
+  color: var(--color-muted);
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+}
+
+/* --------------------------------------------------------------------------
+   3. Floating Paper Note Navigation ("Scroll slowly 🌸")
+   -------------------------------------------------------------------------- */
+.floating-paper-note {
+  position: fixed;
+  right: 2rem;
+  top: 35%;
+  z-index: 100;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  padding: 0.85rem 1.4rem 0.85rem 1.2rem;
+  font-family: var(--font-handwritten);
+  font-size: 1.25rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-paper);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  border: 2px solid rgba(74, 63, 53, 0.12);
+  cursor: default;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  backdrop-filter: blur(2px);
+  transform-origin: center center;
+}
+
+.floating-paper-note::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 50px;
+  height: 18px;
+  background-color: var(--tape-color-alt);
+  border-left: 2px dashed rgba(255, 255, 255, 0.6);
+  border-right: 2px dashed rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   4. Section Layout Base Shell
+   -------------------------------------------------------------------------- */
+.section-container {
+  min-height: 95vh;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--section-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.scrapbook-card-placeholder {
+  background: var(--bg-card);
+  width: 100%;
+  min-height: 380px;
+  padding: 3rem 2rem;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  border: 2.5px dashed var(--color-accent);
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.washi-tape-top-left {
+  position: absolute;
+  top: -14px;
+  left: 10%;
+  width: 85px;
+  height: 25px;
+  background-color: var(--tape-color);
+  transform: rotate(-6deg);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+
+.washi-tape-top-right {
+  position: absolute;
+  top: -14px;
+  right: 10%;
+  width: 85px;
+  height: 25px;
+  background-color: var(--tape-color-alt);
+  transform: rotate(5deg);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+
+.section-tag {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-text);
+  font-family: var(--font-handwritten);
+  font-size: 1.1rem;
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  border: 1px dashed var(--color-primary);
+}
+
+.section-title {
+  color: var(--color-text);
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 4px;
+  margin: 0.5rem auto 0;
+  opacity: 0.7;
+}
+
+.section-subtitle {
+  color: var(--color-muted);
+  font-family: var(--font-handwritten);
+  font-size: 1.4rem;
+  max-width: 600px;
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO SECTION SPECIFIC STYLES
+   -------------------------------------------------------------------------- */
+.hero-section {
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Floating Sticky Notes around Hero */
+.hero-sticky-notes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sticky-note {
+  position: absolute;
+  padding: 0.6rem 1.1rem;
+  font-family: var(--font-handwritten);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-secondary);
+  border-radius: 185px 15px 200px 15px / 15px 200px 15px 185px;
+  box-shadow: 2px 5px 12px rgba(74, 63, 53, 0.08);
+  border: 1px solid rgba(74, 63, 53, 0.1);
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.sticky-note:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  box-shadow: 4px 8px 18px rgba(74, 63, 53, 0.14);
+  z-index: 20;
+}
+
+/* Faux tape on sticky note */
+.sticky-note::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 14px;
+  background-color: var(--tape-color-alt);
+  opacity: 0.8;
+}
+
+/* Positions & Rotations for sticky notes */
+.note-1 { top: 12%; left: 3%; background: #FFE5EC; transform: rotate(-5deg); }
+.note-2 { top: 22%; right: 4%; background: #FFF0F5; transform: rotate(6deg); }
+.note-3 { bottom: 24%; left: 4%; background: #FFF3B0; transform: rotate(-8deg); }
+.note-4 { bottom: 15%; right: 5%; background: #FFC6D3; transform: rotate(4deg); }
+.note-5 { top: 52%; right: 2%; background: #E8E8E4; transform: rotate(-3deg); }
+
+/* Hero Main Card */
+.hero-card {
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 720px;
+  padding: 3.5rem 2.5rem;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  border: 2px dashed var(--color-primary);
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
+  margin: 1.5rem 0;
+}
+
+.hero-label {
+  font-family: var(--font-handwritten);
+  color: var(--color-muted);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  color: var(--color-text);
+  margin-bottom: 0.8rem;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-flower-emoji {
+  display: inline-block;
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center center;
+}
+
+.hero-heading:hover .hero-flower-emoji {
+  transform: rotate(360deg) scale(1.2);
+}
+
+.hero-sub1 {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.hero-sub2 {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.2rem, 2.3vw, 1.6rem);
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  line-height: 1.4;
+}
+
+/* Hero Hand-Drawn SVG Doodle Illustration Container */
+.hero-illustration-container {
+  position: relative;
+  margin: 1rem 0 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hero-doodle-svg {
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0px 4px 8px rgba(74, 63, 53, 0.06));
+}
+
+/* Hover stars container */
+.illustration-hover-stars {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hero-illustration-container:hover .illustration-hover-stars {
+  opacity: 1;
+}
+
+.pop-star {
+  position: absolute;
+  font-size: 1.4rem;
+  animation: starPulse 1.2s infinite alternate ease-in-out;
+}
+.pop-star.s1 { top: 0; left: 10%; animation-delay: 0s; }
+.pop-star.s2 { top: 15%; right: 8%; animation-delay: 0.3s; }
+.pop-star.s3 { bottom: 5%; left: 15%; animation-delay: 0.6s; }
+
+@keyframes starPulse {
+  0% { transform: scale(0.8) rotate(-10deg); }
+  100% { transform: scale(1.25) rotate(15deg); }
+}
+
+/* Eye Blinking Animation for Cloud */
+.blink-eye {
+  transform-origin: center center;
+  animation: eyeBlink 4s infinite ease-in-out;
+}
+
+@keyframes eyeBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+/* Twinkling Stars in SVG */
+.twinkle-star {
+  animation: starTwinkle 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes starTwinkle {
+  0% { opacity: 0.3; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Paper Airplane Motion */
+.paper-plane {
+  transform-origin: center center;
+  animation: planeDrift 4s infinite ease-in-out alternate;
+}
+
+@keyframes planeDrift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(12px, -6px) rotate(4deg); }
+}
+
+/* Steam Animation */
+.steam-line {
+  animation: steamRise 2.8s infinite ease-in-out;
+  stroke-dasharray: 10;
+}
+
+@keyframes steamRise {
+  0% { opacity: 0; transform: translateY(3px); }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Interactive Hero CTA Button */
+.hero-button-wrapper {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.hero-cta-btn {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  padding: 0.85rem 2.2rem;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  border: 2px solid var(--color-text);
+  box-shadow: 0 6px 18px rgba(255, 143, 171, 0.35), 0 2px 4px rgba(74, 63, 53, 0.1);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  position: relative;
+}
+
+.hero-cta-btn:hover {
+  transform: rotate(3deg) scale(1.07);
+  background-color: #ff7597;
+  box-shadow: 0 10px 24px rgba(255, 143, 171, 0.5), 0 4px 8px rgba(74, 63, 53, 0.12);
+}
+
+.hero-cta-btn:active {
+  transform: scale(0.98) rotate(0deg);
+}
+
+.btn-sparkle {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hero-cta-btn:hover .btn-sparkle {
+  opacity: 1;
+  transform: scale(1.2) rotate(15deg);
+}
+
+/* --------------------------------------------------------------------------
+   6. CURSOR TRAILING HEARTS & POPPING FLOWERS
+   -------------------------------------------------------------------------- */
+.trailing-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-size: 14px;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+}
+
+.popping-flower {
+  position: absolute;
+  pointer-events: none;
+  z-index: 15;
+  font-size: 1.5rem;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+}
+
+/* --------------------------------------------------------------------------
+   7. Decorative Floating Scrapbook SVGs
+   -------------------------------------------------------------------------- */
+.decor-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-decor {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.75;
+  filter: drop-shadow(0px 2px 4px rgba(74, 63, 53, 0.08));
+  will-change: transform;
+}
+
+.decor-top-left     { top: 8%; left: 5%; }
+.decor-top-right    { top: 12%; right: 6%; }
+.decor-bottom-left  { bottom: 10%; left: 4%; }
+.decor-bottom-right { bottom: 8%; right: 5%; }
+.decor-mid-left     { top: 50%; left: 3%; }
+.decor-mid-right    { top: 45%; right: 4%; }
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  will-change: opacity, transform;
+}
+
+#footer {
+  min-height: 30vh;
+  background: transparent;
+  border-top: 2px dashed var(--color-accent);
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .sticky-note {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .note-1 { top: 5%; left: 2%; }
+  .note-2 { top: 10%; right: 2%; }
+  .note-3 { bottom: 6%; left: 2%; }
+  .note-4 { bottom: 4%; right: 2%; }
+  .note-5 { display: none; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 4rem 1rem;
+  }
+
+  .floating-paper-note {
+    right: 1rem;
+    top: auto;
+    bottom: 2rem;
+    font-size: 1.1rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .hero-card {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .washi-tape-top-left,
+  .washi-tape-top-right {
+    width: 65px;
+    height: 20px;
+  }
+
+  .sticky-note {
+    scale: 0.85;
+  }
+
+  .hero-doodle-svg {
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-paper-note {
+    font-size: 1rem;
+    padding: 0.5rem 0.85rem;
+    bottom: 1.5rem;
+    right: 0.8rem;
+  }
+
+  .hero-card {
+    padding: 2.2rem 1rem;
+  }
+
+  .sticky-note {
+    display: none; /* Hide floating background notes on mobile to prevent clutter */
+  }
+}

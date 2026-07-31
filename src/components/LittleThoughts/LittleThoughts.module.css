@@ -1,0 +1,281 @@
+/* ==========================================================================
+   LittleThoughts Component Styles (CSS Module)
+   ========================================================================== */
+
+.thoughtsSection {
+  position: relative;
+  width: 100%;
+  padding: 5rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Area */
+.headerArea {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.mainTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   Scrapbook Grid Container
+   -------------------------------------------------------------------------- */
+.scrapbookGrid {
+  width: 100%;
+  max-width: 1050px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.2rem 1.8rem;
+  position: relative;
+  z-index: 5;
+  margin: 1.5rem 0;
+}
+
+/* Note Base Styles */
+.noteCard {
+  background-color: var(--bg-secondary);
+  padding: 1.8rem 1.4rem;
+  border-radius: var(--radius-note);
+  border: 1.5px solid rgba(74, 63, 53, 0.12);
+  box-shadow: var(--shadow-sticky);
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: visible;
+  perspective: 1000px;
+}
+
+.noteCard:hover {
+  transform: translateY(-6px) scale(1.03) !important;
+  box-shadow: 0 12px 26px rgba(74, 63, 53, 0.14);
+  z-index: 20;
+}
+
+/* Tape Accent on Notes */
+.noteTape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 48px;
+  height: 16px;
+  background-color: var(--tape-yellow);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  opacity: 0.85;
+  transition: transform 0.2s ease;
+}
+
+.noteCard:hover .noteTape {
+  transform: translateX(-50%) rotate(3deg) scale(1.1);
+}
+
+/* Note Content Typography */
+.noteText {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  color: var(--color-text);
+  line-height: 1.45;
+  font-weight: 600;
+  position: relative;
+  z-index: 5;
+}
+
+/* Note Variant Background Colors & Rotations */
+.noteVar1 { background: #FFF0F5; transform: rotate(-3deg); }
+.noteVar2 { background: #FFF3B0; transform: rotate(4deg); }
+.noteVar3 { background: #FFE5EC; transform: rotate(-5deg); }
+.noteVar4 { background: #FFE8CC; transform: rotate(3deg); }
+.noteVar5 { background: #E8E8E4; transform: rotate(-2deg); }
+.noteVar6 { background: #FFF0F5; transform: rotate(5deg); }
+.noteVar7 { background: #FFE5EC; transform: rotate(-4deg); }
+.noteVar8 { background: #FFF3B0; transform: rotate(3deg); }
+.noteVar9 { background: #FFE8CC; transform: rotate(-3deg); }
+.noteVar10 { background: #E8E8E4; transform: rotate(4deg); }
+
+/* Hidden Secret Doodle Container */
+.secretDoodle {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  font-size: 1.4rem;
+}
+
+.secretDoodle.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --------------------------------------------------------------------------
+   Scattered Background Handwritten Labels
+   -------------------------------------------------------------------------- */
+.bgScatterText {
+  position: absolute;
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+  color: var(--color-muted);
+  opacity: 0.65;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.bgText1 { top: 18%; left: 4%; transform: rotate(-12deg); }
+.bgText2 { top: 38%; right: 5%; transform: rotate(10deg); }
+.bgText3 { bottom: 30%; left: 3%; transform: rotate(-8deg); }
+.bgText4 { bottom: 15%; right: 4%; transform: rotate(14deg); }
+.bgText5 { top: 60%; left: 6%; transform: rotate(-5deg); }
+
+/* --------------------------------------------------------------------------
+   Mini Discovery: Hidden Clickable Stars & Observant Toast
+   -------------------------------------------------------------------------- */
+.hiddenStar {
+  position: absolute;
+  font-size: 1.3rem;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.55;
+  transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+  z-index: 15;
+}
+
+.hiddenStar:hover {
+  transform: scale(1.3) rotate(15deg);
+  opacity: 1;
+}
+
+.hiddenStar.active {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px #FFD166);
+  transform: scale(1.35) rotate(180deg);
+}
+
+.starPos1 { top: 12%; right: 12%; }
+.starPos2 { top: 54%; left: 2%; }
+.starPos3 { bottom: 8%; right: 18%; }
+
+/* Observant Toast Popup */
+.observantToast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-warm-yellow);
+  color: var(--color-text);
+  font-family: var(--font-handwritten);
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--radius-note);
+  border: 2px solid rgba(74, 63, 53, 0.15);
+  box-shadow: var(--shadow-paper);
+  z-index: 999;
+  text-align: center;
+  animation: toastPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes toastPop {
+  0% { opacity: 0; transform: translate(-50%, 20px) scale(0.8); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   Mascot: Peeking Cloud Doodle
+   -------------------------------------------------------------------------- */
+.mascotContainer {
+  position: absolute;
+  top: -42px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 18;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cloudSvg {
+  width: 52px;
+  height: 38px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(74, 63, 53, 0.1));
+}
+
+.mascotContainer:hover .cloudSvg {
+  transform: scale(1.15) translateY(-3px);
+}
+
+.speechBubble {
+  position: absolute;
+  top: -30px;
+  background: var(--bg-secondary);
+  color: var(--color-text);
+  font-family: var(--font-handwritten);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-text);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  white-space: nowrap;
+  animation: bubblePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes bubblePop {
+  0% { opacity: 0; transform: scale(0.5) translateY(5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Blushing Cloud Keyframe */
+.cloudBlush {
+  animation: cloudBlushAnim 0.6s ease-in-out;
+}
+
+@keyframes cloudBlushAnim {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25) rotate(-6deg); }
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .scrapbookGrid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .noteCard {
+    transform: rotate(0deg) !important; /* Mobile clean stack without horizontal overflow */
+  }
+
+  .bgScatterText {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+.welcomeBackBadge {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 800;
+  background: var(--color-soft-peach);
+  color: var(--color-text);
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0.35rem 0.95rem;
+  border-radius: 16px;
+  border: 1.5px dashed var(--color-primary-pink);
+  box-shadow: var(--shadow-paper);
+  pointer-events: auto;
+  user-select: none;
+  animation: badgeFadeIn 0.8s ease-out;
+}
+
+@keyframes badgeFadeIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .welcomeBackBadge {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1rem;
+  }
+}

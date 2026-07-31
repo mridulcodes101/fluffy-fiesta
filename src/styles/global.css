@@ -1,0 +1,161 @@
+/* ==========================================================================
+   For Mishti 🌸 - Polished Global CSS Stylesheet
+   ========================================================================== */
+
+@import './variables.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  /* Paper grain texture background */
+  background-image: 
+    radial-gradient(rgba(138, 125, 116, 0.07) 1px, transparent 1px),
+    radial-gradient(rgba(255, 143, 171, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Accessible Focus States */
+:focus-visible {
+  outline: 2px dashed var(--color-primary-pink);
+  outline-offset: 4px;
+}
+
+/* Headings & Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+h1 { font-size: clamp(2.6rem, 6.5vw, 4.8rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+
+p {
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 1.85vw, 1.2rem);
+}
+
+.handwritten-text {
+  font-family: var(--font-handwritten);
+}
+
+/* Reusable Scrapbook Paper Card Styling */
+.scrapbook-paper-card {
+  background-color: var(--bg-secondary);
+  width: 100%;
+  max-width: var(--card-max-width);
+  min-height: 360px;
+  padding: 3rem 2rem;
+  border-radius: var(--radius-paper);
+  border: 2.5px dashed var(--color-light-pink);
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* Washi Tape Details */
+.washi-tape-left {
+  position: absolute;
+  top: -14px;
+  left: 10%;
+  width: 85px;
+  height: 24px;
+  background-color: var(--tape-yellow);
+  transform: rotate(-6deg);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 5;
+}
+
+.washi-tape-right {
+  position: absolute;
+  top: -14px;
+  right: 10%;
+  width: 85px;
+  height: 24px;
+  background-color: var(--tape-pink);
+  transform: rotate(5deg);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 5;
+}
+
+/* Tag Pill */
+.section-tag-pill {
+  display: inline-block;
+  background: var(--color-light-pink);
+  color: var(--color-text);
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+  padding: 0.2rem 1.1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  border: 1px dashed var(--color-primary-pink);
+}
+
+/* Button Base */
+.scrapbook-btn {
+  background-color: var(--color-primary-pink);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-paper);
+  border: 2px solid var(--color-text);
+  box-shadow: 0 6px 18px rgba(255, 143, 171, 0.35);
+  cursor: pointer;
+  outline: none;
+  transition: transform var(--duration-normal) var(--ease-soft), background-color 0.3s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scrapbook-btn:hover {
+  transform: rotate(3deg) scale(1.06);
+  background-color: #ff7597;
+}
+
+.scrapbook-btn:active {
+  transform: scale(0.98);
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility: Reduced Motion Preference
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,358 @@
+/* ==========================================================================
+   MiniGame (Paper Airplane Challenge) Component Styles (CSS Module)
+   ========================================================================== */
+
+.gameSection {
+  position: relative;
+  width: 100%;
+  padding: 5.5rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Header Area
+   -------------------------------------------------------------------------- */
+.headerArea {
+  text-align: center;
+  margin-bottom: 2.8rem;
+  position: relative;
+  z-index: 10;
+}
+
+.mainTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   Scrapbook Game Card Shell
+   -------------------------------------------------------------------------- */
+.gameCardShell {
+  background-color: var(--bg-secondary);
+  width: 100%;
+  max-width: 820px;
+  min-height: 480px;
+  padding: 2.8rem 2rem;
+  border-radius: var(--radius-paper);
+  border: 2.5px dashed var(--color-primary-pink);
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.washiTapeLeft {
+  position: absolute;
+  top: -14px;
+  left: 10%;
+  width: 85px;
+  height: 24px;
+  background-color: var(--tape-yellow);
+  transform: rotate(-5deg);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 15;
+}
+
+.washiTapeRight {
+  position: absolute;
+  top: -14px;
+  right: 10%;
+  width: 85px;
+  height: 24px;
+  background-color: var(--tape-pink);
+  transform: rotate(4deg);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 15;
+}
+
+/* --------------------------------------------------------------------------
+   Pre-Game Instructions & Start Area
+   -------------------------------------------------------------------------- */
+.preGameArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto 0;
+  gap: 1.2rem;
+}
+
+.missionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--color-text);
+}
+
+.missionSubtitle {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.3rem, 2.3vw, 1.65rem);
+  color: var(--color-primary-pink);
+  font-weight: 700;
+}
+
+.startButton {
+  background-color: var(--color-primary-pink);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  padding: 0.85rem 2.4rem;
+  border-radius: var(--radius-paper);
+  border: 2px solid var(--color-text);
+  box-shadow: 0 6px 18px rgba(255, 143, 171, 0.35);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+  user-select: none;
+  margin-top: 0.8rem;
+}
+
+.startButton:hover {
+  transform: rotate(3deg) scale(1.07);
+  background-color: #ff7597;
+}
+
+/* --------------------------------------------------------------------------
+   Scoreboard & Washi Tape Progress Bar
+   -------------------------------------------------------------------------- */
+.scoreboard {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  padding: 0 0.5rem;
+}
+
+.scoreText {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-text);
+}
+
+.timerDisplay {
+  font-family: var(--font-handwritten);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  background: var(--color-soft-peach);
+  padding: 0.3rem 0.9rem;
+  border-radius: 16px;
+  border: 1px dashed var(--color-primary-pink);
+}
+
+/* Washi Tape Progress Bar */
+.washiProgressBar {
+  width: 100%;
+  background: var(--tape-yellow);
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  border: 2px dashed rgba(74, 63, 53, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.progressCheck {
+  font-size: 1.2rem;
+  color: var(--color-muted);
+  opacity: 0.35;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.progressCheck.filled {
+  color: var(--color-text);
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+/* --------------------------------------------------------------------------
+   Play Arena & Flying Airplanes
+   -------------------------------------------------------------------------- */
+.gameArena {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background-color: #FFFDF8;
+  border-radius: var(--radius-sm);
+  border: 2px dashed rgba(74, 63, 53, 0.12);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Flying Airplane Target */
+.airplaneTarget {
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px; /* Expand touch target area for mobile */
+  transition: transform 0.2s ease;
+  will-change: transform, left, top;
+}
+
+.airplaneTarget:hover {
+  transform: scale(1.18) rotate(5deg) !important;
+}
+
+.planeSvg {
+  filter: drop-shadow(0 3px 6px rgba(74, 63, 53, 0.12));
+}
+
+/* Floating +1 Text indicator */
+.floatingPlusOne {
+  position: absolute;
+  font-family: var(--font-handwritten);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-pink);
+  pointer-events: none;
+  z-index: 30;
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   Mascot Cheerleader / Flight Controller
+   -------------------------------------------------------------------------- */
+.mascotWrapper {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  z-index: 25;
+}
+
+.mascotWrapper:hover .mascotSvg {
+  transform: scale(1.12) rotate(-5deg);
+}
+
+.mascotSvg {
+  width: 52px;
+  height: 38px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 5px rgba(74, 63, 53, 0.1));
+}
+
+.mascotBubble {
+  background: var(--bg-secondary);
+  color: var(--color-text);
+  font-family: var(--font-handwritten);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 14px;
+  border: 1.5px solid var(--color-text);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  white-space: nowrap;
+  animation: mascotPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes mascotPop {
+  0% { opacity: 0; transform: scale(0.6) translateX(-5px); }
+  100% { opacity: 1; transform: scale(1) translateX(0); }
+}
+
+/* --------------------------------------------------------------------------
+   Completion & Sealed Secret Envelope Area
+   -------------------------------------------------------------------------- */
+.completionArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto 0;
+  gap: 1.4rem;
+  animation: completionFade 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes completionFade {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.secretEnvelope {
+  background: #FFFDF8;
+  padding: 2.2rem 3rem;
+  border-radius: var(--radius-paper);
+  border: 2px dashed var(--color-primary-pink);
+  box-shadow: var(--shadow-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.envelopeIcon {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 4px 8px rgba(74, 63, 53, 0.12));
+  animation: floatHeart 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(0px) rotate(-3deg); }
+  100% { transform: translateY(-8px) rotate(4deg); }
+}
+
+.envelopeText {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--color-text);
+}
+
+.openSecretBtn {
+  background-color: var(--color-primary-pink);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  padding: 0.85rem 2.5rem;
+  border-radius: var(--radius-paper);
+  border: 2px solid var(--color-text);
+  box-shadow: 0 8px 22px rgba(255, 143, 171, 0.4);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+  user-select: none;
+}
+
+.openSecretBtn:hover {
+  transform: rotate(3deg) scale(1.07);
+  background-color: #ff7597;
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .gameCardShell {
+    padding: 2rem 1.25rem;
+    min-height: 420px;
+  }
+
+  .gameArena {
+    height: 280px;
+  }
+
+  .mascotWrapper {
+    top: 10px;
+    right: 10px;
+  }
+}
